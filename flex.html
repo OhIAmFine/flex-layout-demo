@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生理解flex布局</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.flex{
+			width: 400px;
+			height: 80px;
+			/*margin: 0 auto;*/
+		}
+		.flex p {
+			font-size: 20px;
+			color: red;
+			margin-bottom: 10px;
+		}
+		.flex input {
+			/*width: 80px;*/
+			height: 38px;
+			padding: 10px 5px;
+		
+		}
+		.divBox{
+			margin: 0 auto;
+			border: 1px solid black;
+			width: 700px;
+			height: 300px;
+			overflow: auto;
+			display: flex;
+			/*flex-direction: column;*/
+		}
+		.divBox>div{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			font-size: 20px;
+			color: red;
+			text-align: center;
+			line-height: 100px;
+			background-color: blue;
+			box-sizing: border-box;
+			margin: 5px 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			let flexDirectionButtons =  document.querySelectorAll('.flexDirection')[0].getElementsByTagName('input');
+			let flexWrapButtons =  document.querySelectorAll('.flexWrap')[0].getElementsByTagName('input');
+			let justifyContenButtons =  document.querySelectorAll('.justifyConten')[0].getElementsByTagName('input');
+			// let flexDirectionButtons =  document.querySelectorAll('.flexDirection')[0].getElementsByTagName('input');
+			let oDivBox = document.querySelectorAll('.divBox')[0];
+			for(let i in flexDirectionButtons){
+				flexDirectionButtons[i].onclick = function(ev) {
+					oDivBox.style.flexDirection = `${ev.target.value}`;
+					console.log(`value is ${ev.target.value}`);
+				}
+			}
+			for(let i in flexWrapButtons){
+				flexWrapButtons[i].onclick = function(ev) {
+					oDivBox.style.flexWrap = `${ev.target.value}`;
+					console.log(`value is ${ev.target.value}`);
+				}
+			}
+			for(let i in justifyContenButtons){
+				justifyContenButtons[i].onclick = function(ev) {
+					oDivBox.style.justifyContent = `${ev.target.value}`;
+					console.log(`value is ${ev.target.value}`);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="flexDirection flex">
+	<p>flex-direction(默认值为row)</p>
+		<input type="button" value="row">
+		<input type="button" value="column">
+		<input type="button" value="row-reverse">
+		<input type="button" value="column-reverse">
+	</div>
+	<div class="flexWrap flex">
+	<p>flex-wrap(默认值为nowrap)</p>
+		<input type="button" value="nowrap">
+		<input type="button" value="wrap">
+		<input type="button" value="wrap-reverse">
+	</div>
+	<div class="justifyConten flex">
+	<p>justify-content(默认值为flex-start)</p>
+		<input type="button" value="flex-start">
+		<input type="button" value="flex-end">
+		<input type="button" value="center">
+		<input type="button" value="space-between">
+		<input type="button" value="space-around">
+	</div>
+	<div id="divWrap">
+		<div class="divBox">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+			<div>10</div>
+		</div>
+	</div>
+</body>
+</html>
